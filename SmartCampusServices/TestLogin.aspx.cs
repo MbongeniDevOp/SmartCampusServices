@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,7 +11,6 @@ namespace SmartCampusServices
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -20,19 +18,25 @@ namespace SmartCampusServices
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
+            Logger logger = new Logger();
+
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 lblMessage.Text = "Please enter both email and password.";
+                logger.LogToFile("Login attempt failed. Email or password was empty.");
                 return;
             }
 
-            string connString = "Host=db.enqvqdivozqrnknsgqws.supabase.co;Port=5432;Username=postgres;Password=Smart@campus1;Database=postgres;SslMode=Require;Trust Server Certificate=true;";
+            string connString = "Host=172.20.10.1;Port=5432;Username=postgres;Password=Smart@campus1;Database=postgres;SSL Mode=Require;Trust Server Certificate=true;";
 
             try
             {
+                logger.LogToFile($"Login attempt for email: {email}");
+
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
+                    logger.LogToFile("Connection to the database was successful.");
 
                     using (var cmd = new NpgsqlCommand("SELECT * FROM get_user_login(@p_email, @p_password)", conn))
                     {
@@ -48,10 +52,12 @@ namespace SmartCampusServices
 
                                 lblMessage.ForeColor = System.Drawing.Color.Green;
                                 lblMessage.Text = $"Welcome {fullName} ({role})!";
+                                logger.LogToFile($"Login successful. User: {fullName} ({role})");
                             }
                             else
                             {
                                 lblMessage.Text = "Invalid email or password.";
+                                logger.LogToFile($"Login failed. Invalid credentials for email: {email}");
                             }
                         }
                     }
@@ -60,7 +66,9 @@ namespace SmartCampusServices
             catch (Exception ex)
             {
                 lblMessage.Text = $"Error: {ex.Message}";
+                logger.LogToFile($"Error: {ex.Message} | Stack Trace: {ex.StackTrace}");
             }
         }
+        
     }
 }
