@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--<div class="container" style="margin-top:60px;">
+    <div class="container" style="margin-top:60px;">
             <div style="margin: 50px;">
             <h2>Login</h2>
 
@@ -16,18 +16,6 @@
 
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/>
         </div>
-    </div>--%>
-
-    <div class="container>
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card">
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
+    
 </asp:Content>
