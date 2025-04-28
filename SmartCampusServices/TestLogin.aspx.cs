@@ -27,7 +27,8 @@ namespace SmartCampusServices
                 return;
             }
 
-            string connString = "Host=172.20.10.1;Port=5432;Username=postgres;Password=Smart@campus1;Database=postgres;SSL Mode=Require;Trust Server Certificate=true;";
+            string connString = System.Configuration.ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
+
 
             try
             {
