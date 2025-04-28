@@ -29,6 +29,44 @@ namespace SmartCampusServices
 
             _logger.LogToFile($"Login attempt for email: {email}");
 
+            //try
+            //{
+            //    using (var conn = new NpgsqlConnection(_connString))
+            //    {
+            //        conn.Open();
+            //        _logger.LogToFile("Connected to database successfully.");
+
+            //        // Prepare query with parameters to prevent SQL injection
+            //        using (var cmd = new NpgsqlCommand("SELECT * FROM get_user_login(@p_email, @p_password)", conn))
+            //        {
+            //            cmd.Parameters.AddWithValue("p_email", email);
+            //            cmd.Parameters.AddWithValue("p_password", password);
+
+            //            using (var reader = cmd.ExecuteReader())
+            //            {
+            //                if (reader.Read())
+            //                {
+            //                    string fullName = reader["full_name"]?.ToString();
+            //                    string role = reader["role"]?.ToString();
+
+            //                    DisplayMessage($"Welcome {fullName} ({role})!", isError: false);
+            //                    _logger.LogToFile($"Login successful. User: {fullName} ({role})");
+            //                }
+            //                else
+            //                {
+            //                    DisplayMessage("Invalid email or password.", isError: true);
+            //                    _logger.LogToFile($"Login failed. Invalid credentials for email: {email}");
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    DisplayMessage($"Error: {ex.Message}", isError: true);
+            //    _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
+            //}
+
             try
             {
                 using (var conn = new NpgsqlConnection(_connString))
@@ -36,8 +74,16 @@ namespace SmartCampusServices
                     conn.Open();
                     _logger.LogToFile("Connected to database successfully.");
 
-                    // Prepare query with parameters to prevent SQL injection
-                    using (var cmd = new NpgsqlCommand("SELECT * FROM get_user_login(@p_email, @p_password)", conn))
+                    // Inline SQL instead of calling function
+                    string query = @"
+            SELECT id, email, full_name, role
+            FROM users
+            WHERE TRIM(email) ILIKE TRIM(@p_email)
+              AND TRIM(password) = TRIM(@p_password)
+            LIMIT 1;
+        ";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("p_email", email);
                         cmd.Parameters.AddWithValue("p_password", password);
@@ -66,6 +112,7 @@ namespace SmartCampusServices
                 DisplayMessage($"Error: {ex.Message}", isError: true);
                 _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
             }
+
         }
 
         private static string GetConnectionString()

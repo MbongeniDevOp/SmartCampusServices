@@ -272,3 +272,22 @@
 2025/04/28 16:54:56: Login attempt for email: admin@tut.ac.za
 2025/04/28 16:54:58: Connected to database successfully.
 2025/04/28 16:54:58: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:02:41: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:02:43: Connected to database successfully.
+2025/04/28 17:02:43: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:11:21: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:11:23: Connected to database successfully.
+2025/04/28 17:11:23: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:15:02: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:15:02: Connected to database successfully.
+2025/04/28 17:15:02: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:19:49: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:19:51: Connected to database successfully.
+2025/04/28 17:19:51: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:22:58: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:22:59: Connected to database successfully.
+2025/04/28 17:23:00: Login failed. Invalid credentials for email: admin@tut.ac.za
+2025/04/28 17:23:07: Login attempt for email: admin@tut.ac.za
+2025/04/28 17:23:07: Connected to database successfully.
+2025/04/28 17:23:07: Login successful. User: Mbongeni Nkosi (admin)
+2025/04/28 18:17:13: Login attempt failed. Email or password was empty.
