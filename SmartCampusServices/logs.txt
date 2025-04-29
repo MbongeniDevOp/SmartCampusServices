@@ -83,3 +83,17 @@ Exception Detail: Thread was being aborted.
 Exception Detail: Thread was being aborted.
 2025/04/29 11:23:45: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
 2025/04/29 11:23:45: Connected to database successfully.
+2025/04/29 15:41:14: Login attempt for email: admin@tut.ac.za
+2025/04/29 15:41:16: Connected to database successfully.
+2025/04/29 15:41:16: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/04/29 15:41:16: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/04/29 15:41:16: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/04/29 15:41:16: Connected to database successfully.
+2025/04/29 15:45:08: Login attempt for email: admin@tut.ac.za
+2025/04/29 15:45:09: Connected to database successfully.
+2025/04/29 15:45:09: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/04/29 15:45:09: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/04/29 15:45:09: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/04/29 15:45:09: Connected to database successfully.
