@@ -69,8 +69,8 @@
                     </li>
 
                       <li class="nav-item">
-                        <asp:LinkButton CssClass="nav-link" ID="LinkButton4" 
-                            runat="server">Logout</asp:LinkButton>
+                        <asp:LinkButton CssClass="nav-link" ID="lnkLogout" 
+                            runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                     </li>
 
                       <li class="nav-item">

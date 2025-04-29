@@ -96,7 +96,30 @@ namespace SmartCampusServices
                                 string role = reader["role"]?.ToString();
 
                                 DisplayMessage($"Welcome {fullName} ({role})!", isError: false);
-                                _logger.LogToFile($"Login successful. User: {fullName} ({role})");
+
+                                // Display appropriate page depending on who's logged in.
+                                if (role == "admin")
+                                {
+                                    _logger.LogToFile($"Admin Login successful. User: {fullName} ({role})");
+                                    try
+                                    {
+                                        Session["LoggedInEmail"] = email;
+                                        Session["LoggedInPassword"] = password;
+                                        Response.Redirect("https://localhost:44303/AdminLogin.aspx");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        _logger.LogToFile($"Redirect Error...=>\nException Detail: {ex.Message}");
+                                    }
+                                }
+                                else if (role == "lecturer")
+                                {
+                                    _logger.LogToFile($"Lecturer Login successful. User: {fullName} ({role})");
+                                }
+                                else if (role == "student")
+                                {
+                                    _logger.LogToFile($"Student Login successful. User: {fullName} ({role})");
+                                }
                             }
                             else
                             {
