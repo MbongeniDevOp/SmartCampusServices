@@ -5,6 +5,7 @@
 <html>
 <head runat="server">
     <title>Smart Campus Services</title>
+    <link rel="icon" type="image/x-icon" href="imgs/three-squares-svgrepo-com.svg">
 
     <%--custom css--%>
     <link href="custom_css/custom.css" rel="stylesheet" />
