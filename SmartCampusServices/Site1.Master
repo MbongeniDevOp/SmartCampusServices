@@ -55,7 +55,7 @@
 
                     <li class="nav-item">
                         <asp:LinkButton CssClass="nav-link" ID="lnkViewSchedules" 
-                            runat="server">View Schedules</asp:LinkButton>
+                            runat="server" Visible="false" href="ViewSchedules.aspx">View Schedules</asp:LinkButton>
                     </li>
 
                     <%--<li class="nav-item">
