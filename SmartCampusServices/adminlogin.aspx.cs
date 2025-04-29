@@ -41,16 +41,16 @@ namespace SmartCampusServices
                                 string fullName = reader["full_name"]?.ToString();
                                 string role = reader["role"]?.ToString();
 
-                                //Response.Write("Hello Admin...");
-                                //DisplayMessage($"Administrator<br/>Welcome {fullName} ({role})!", isError: false);
                                 LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
                                 LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
-                                
+                                LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+                                LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+
+                                login.Visible = false;
+                                viewSchedules.Visible = true;
                                 logout.Visible = true;
                                 helloUser.Visible = true;
                                 helloUser.Text = $"Hello, {fullName}";
-
-
                             }
                             else
                             {

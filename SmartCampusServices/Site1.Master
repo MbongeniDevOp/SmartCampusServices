@@ -53,11 +53,6 @@
 
                   <ul class="navbar-nav">
 
-                    <li class="nav-item">
-                        <asp:LinkButton CssClass="nav-link" ID="lnkViewSchedules" 
-                            runat="server" Visible="false" href="ViewSchedules.aspx">View Schedules</asp:LinkButton>
-                    </li>
-
                     <%--<li class="nav-item">
                         <asp:LinkButton CssClass="nav-link" ID="LinkButton2" 
                             runat="server">Student Login</asp:LinkButton>
@@ -69,8 +64,18 @@
                     </li>--%>
 
                     <li class="nav-item">
+                        <asp:LinkButton CssClass="nav-link" ID="lnkLogin" 
+                            runat="server" OnClick="lnkLogin_Click">Login</asp:LinkButton>
+                    </li>
+
+                    <li class="nav-item">
                         <asp:LinkButton CssClass="nav-link" ID="lnkHelloUser" 
                             runat="server" Visible="false">Hello User</asp:LinkButton>
+                    </li>
+
+                    <li class="nav-item">
+                        <asp:LinkButton CssClass="nav-link" ID="lnkViewSchedules" 
+                            runat="server" Visible="false" href="ViewSchedules.aspx" OnClick="lnkViewSchedules_Click">View Schedules</asp:LinkButton>
                     </li>
 
                     <li class="nav-item">

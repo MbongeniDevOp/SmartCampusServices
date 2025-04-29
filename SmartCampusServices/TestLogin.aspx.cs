@@ -105,6 +105,7 @@ namespace SmartCampusServices
                                     {
                                         Session["LoggedInEmail"] = email;
                                         Session["LoggedInPassword"] = password;
+                                        Session["LoggedInFullName"] = fullName;
                                         Response.Redirect("https://localhost:44303/AdminLogin.aspx");
                                     }
                                     catch (Exception ex)

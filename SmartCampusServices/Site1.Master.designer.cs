@@ -33,13 +33,13 @@ namespace SmartCampusServices
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lnkViewSchedules control.
+        /// lnkLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkViewSchedules;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogin;
 
         /// <summary>
         /// lnkHelloUser control.
@@ -49,6 +49,15 @@ namespace SmartCampusServices
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkHelloUser;
+
+        /// <summary>
+        /// lnkViewSchedules control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkViewSchedules;
 
         /// <summary>
         /// lnkLogout control.

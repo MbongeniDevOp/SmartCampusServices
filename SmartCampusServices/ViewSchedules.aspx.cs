@@ -16,6 +16,30 @@ namespace SmartCampusServices
         {
             if (!IsPostBack)
             {
+                // Handle visibility of master page links
+                LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
+                LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+                LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+                LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+
+                string fullName = Session["LoggedInFullName"]?.ToString();
+
+                if (!string.IsNullOrEmpty(fullName))
+                {
+                    login.Visible = false;
+                    viewSchedules.Visible = true;
+                    logout.Visible = true;
+                    helloUser.Visible = true;
+                    helloUser.Text = $"Hello, {fullName}";
+                }
+                else
+                {
+                    login.Visible = true;
+                    viewSchedules.Visible = false;
+                    logout.Visible = false;
+                    helloUser.Visible = false;
+                }
+
                 BindScheduleTable();
             }
         }

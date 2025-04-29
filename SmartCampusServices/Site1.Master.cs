@@ -16,5 +16,15 @@ namespace SmartCampusServices
             Session.Abandon();
             Response.Redirect("TestLogin.aspx");
         }
+
+        protected void lnkLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TestLogin.aspx");
+        }
+
+        protected void lnkViewSchedules_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewSchedules.aspx");
+        }
     }
 }
