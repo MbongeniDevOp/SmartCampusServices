@@ -26,5 +26,10 @@ namespace SmartCampusServices
         {
             Response.Redirect("~/ViewSchedules.aspx");
         }
+
+        protected void lnkHelloUser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AdminLogin.aspx");
+        }
     }
 }

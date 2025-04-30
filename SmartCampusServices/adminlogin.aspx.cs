@@ -12,59 +12,88 @@ namespace SmartCampusServices
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                using (var conn = new NpgsqlConnection(_connString))
+                //try
+                //{
+                //    using (var conn = new NpgsqlConnection(_connString))
+                //    {
+                //        conn.Open();
+                //        _logger.LogToFile("Connected to database successfully.");
+
+                //        string email = Session["LoggedInEmail"]?.ToString() ?? "admin@tut.ac.za";
+                //        string password = Session["LoggedInPassword"]?.ToString() ?? "admin123";
+
+                //        string query = @"
+                //        SELECT id, email, full_name, role
+                //        FROM users
+                //        WHERE TRIM(email) ILIKE TRIM(@p_email)
+                //          AND TRIM(password) = TRIM(@p_password)
+                //        LIMIT 1;";
+
+                //        using (var cmd = new NpgsqlCommand(query, conn))
+                //        {
+                //            cmd.Parameters.AddWithValue("p_email", email);
+                //            cmd.Parameters.AddWithValue("p_password", password);
+
+                //            using (var reader = cmd.ExecuteReader())
+                //            {
+                //                if (reader.Read())
+                //                {
+                //                    string fullName = reader["full_name"]?.ToString();
+                //                    string role = reader["role"]?.ToString();
+
+                //                    if (!string.IsNullOrEmpty(fullName))
+                //                    {
+                //                        LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
+                //                        LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+                //                        LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+                //                        LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                //                        LinkButton imgLogin = (LinkButton)Master.FindControl("imgLogin");
+
+                //                        login.Visible = false;
+                //                        viewSchedules.Visible = true;
+                //                        logout.Visible = true;
+                //                        helloUser.Visible = true;
+                //                        helloUser.Text = $"Hello, {fullName}";
+                //                        imgLogin.Visible = true;
+                //                    }
+                //                }
+                //                else
+                //                {
+                //                    DisplayMessage("Invalid email or password.", isError: true);
+                //                    _logger.LogToFile($"Login failed. Invalid credentials for email: {email}");
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    DisplayMessage($"Error: {ex.Message}", isError: true);
+                //    _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
+                //}
+
+                if (!IsPostBack)
                 {
-                    conn.Open();
-                    _logger.LogToFile("Connected to database successfully.");
-
-                    string email = Session["LoggedInEmail"]?.ToString() ?? "admin@tut.ac.za";
-                    string password = Session["LoggedInPassword"]?.ToString() ?? "admin123";
-
-                    string query = @"
-                        SELECT id, email, full_name, role
-                        FROM users
-                        WHERE TRIM(email) ILIKE TRIM(@p_email)
-                          AND TRIM(password) = TRIM(@p_password)
-                        LIMIT 1;";
-
-                    using (var cmd = new NpgsqlCommand(query, conn))
+                    string fullName = Session["LoggedInFullName"]?.ToString();
+                    if (!string.IsNullOrEmpty(fullName))
                     {
-                        cmd.Parameters.AddWithValue("p_email", email);
-                        cmd.Parameters.AddWithValue("p_password", password);
+                        LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
+                        LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+                        LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+                        LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                        Image imgLogin = (Image)Master.FindControl("imgLogin");
+                        bool isLoggedIn = !string.IsNullOrEmpty(fullName);
+                        imgLogin.Visible = isLoggedIn;
 
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                string fullName = reader["full_name"]?.ToString();
-                                string role = reader["role"]?.ToString();
-
-                                LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
-                                LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
-                                LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
-                                LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
-
-                                login.Visible = false;
-                                viewSchedules.Visible = true;
-                                logout.Visible = true;
-                                helloUser.Visible = true;
-                                helloUser.Text = $"Hello, {fullName}";
-                            }
-                            else
-                            {
-                                DisplayMessage("Invalid email or password.", isError: true);
-                                _logger.LogToFile($"Login failed. Invalid credentials for email: {email}");
-                            }
-                        }
+                        login.Visible = false;
+                        viewSchedules.Visible = true;
+                        logout.Visible = true;
+                        helloUser.Visible = true;
+                        helloUser.Text = $"Hello, {fullName}";
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                DisplayMessage($"Error: {ex.Message}", isError: true);
-                _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
             }
         }
 

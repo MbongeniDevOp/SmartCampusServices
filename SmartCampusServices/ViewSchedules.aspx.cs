@@ -21,6 +21,7 @@ namespace SmartCampusServices
                 LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
                 LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
                 LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                Image imgLogin = (Image)Master.FindControl("imgLogin");
 
                 string fullName = Session["LoggedInFullName"]?.ToString();
 
@@ -31,6 +32,8 @@ namespace SmartCampusServices
                     logout.Visible = true;
                     helloUser.Visible = true;
                     helloUser.Text = $"Hello, {fullName}";
+                    bool isUserLoggedIn = !string.IsNullOrEmpty(fullName);
+                    imgLogin.Visible = isUserLoggedIn;
                 }
                 else
                 {

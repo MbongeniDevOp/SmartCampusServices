@@ -2207,6 +2207,7 @@
     <Content Include="homepage.aspx" />
     <Content Include="imgs\account-add-avatar-person-profile-user-svgrepo-com.svg" />
     <Content Include="imgs\administrator-work-svgrepo-com.svg" />
+    <Content Include="imgs\analytics-laptop-svgrepo-com.svg" />
     <Content Include="imgs\announcement-megaphone-svgrepo-com.svg" />
     <Content Include="imgs\appointment-calendar-date-svgrepo-com.svg" />
     <Content Include="imgs\asia-culturecenter-COWf-5ZtZ6w-unsplash.jpg" />
@@ -2222,6 +2223,7 @@
     <Content Include="imgs\pexels-kaderdygnn-30204873.jpg" />
     <Content Include="imgs\pexels-pixabay-159213.jpg" />
     <Content Include="imgs\pexels-ryutaro-5745045.jpg" />
+    <Content Include="imgs\profile-user-svgrepo-com.svg" />
     <Content Include="imgs\report-svgrepo-com.svg" />
     <Content Include="imgs\schedule-svgrepo-com.svg" />
     <Content Include="imgs\student-dark-skin-tone-svgrepo-com.svg" />

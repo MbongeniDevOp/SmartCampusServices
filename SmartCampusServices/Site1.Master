@@ -69,10 +69,15 @@
                             runat="server" OnClick="lnkLogin_Click">Login</asp:LinkButton>
                     </li>
 
-                    <li class="nav-item">
-                        <asp:LinkButton CssClass="nav-link" ID="lnkHelloUser" 
-                            runat="server" Visible="false">Hello User</asp:LinkButton>
+                    <li class="nav-item d-flex align-items-center gap-2">
+                        <asp:LinkButton CssClass="nav-link p-0" ID="lnkHelloUser" runat="server" Visible="false"
+                            OnClick="lnkHelloUser_Click">
+                            Hello User
+                        </asp:LinkButton>
+                        <asp:Image ID="imgLogin" runat="server" ImageUrl="imgs/profile-user-svgrepo-com.svg"
+                            Visible="false" style="width:30px; height:30px;" CssClass="img-fluid" />
                     </li>
+
 
                     <li class="nav-item">
                         <asp:LinkButton CssClass="nav-link" ID="lnkViewSchedules" 
