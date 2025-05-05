@@ -83,6 +83,7 @@ namespace SmartCampusServices
                         LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
                         LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
                         LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                        LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
                         Image imgLogin = (Image)Master.FindControl("imgLogin");
                         bool isLoggedIn = !string.IsNullOrEmpty(fullName);
                         imgLogin.Visible = isLoggedIn;
@@ -91,6 +92,7 @@ namespace SmartCampusServices
                         viewSchedules.Visible = true;
                         logout.Visible = true;
                         helloUser.Visible = true;
+                        notificationBtn.Visible = true;
                         helloUser.Text = $"Hello, {fullName}";
                     }
                 }
@@ -107,8 +109,8 @@ namespace SmartCampusServices
 
         private void DisplayMessage(string message, bool isError)
         {
-            lblMessage.ForeColor = isError ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-            lblMessage.Text = message;
+            //lblMessage.ForeColor = isError ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+            //lblMessage.Text = message;
         }
     }
 }

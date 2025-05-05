@@ -1,22 +1,98 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="SmartCampusServices.AdminLogin" %>
+﻿<%@ Page Title="Admin Login" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="SmartCampusServices.AdminLogin" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <!-- Optional: Add page-specific CSS here if needed -->
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label><br /><br />
-        <h2 class="mb-4">Admin Dashboard</h2>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center mb-4">Admin Dashboard</h2>
 
-        <!-- Fullscreen section with background image -->
-        <section style="position:relative; height:70vh; width:60vw; padding:0; margin-top:20px; overflow:hidden;">
-            <!-- Full-size image -->
-            <img src="imgs/analytics-laptop-svgrepo-com.svg"
-     style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; z-index:1;" />
-
-            <!-- Optional overlay content goes here -->
-            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:2; color:white;">
-                <h1>Welcome to the Admin Dashboard</h1>
+        <!-- Dashboard Cards -->
+        <div class="row text-center mb-5">
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Users</h5>
+                    <p class="display-4">12</p>
+                </div>
             </div>
-        </section>
-    </div>
-</asp:Content>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Profiles</h5>
+                    <p class="display-4">8</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Reports</h5>
+                    <p class="display-4">4</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Tasks</h5>
+                    <p class="display-4">21</p>
+                </div>
+            </div>
+        </div>
 
+        <!-- DataTable -->
+        <div class="card">
+            <div class="card-body">
+                <table id="adminTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>admin</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>john</td>
+                            <td>Editor</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>jane</td>
+                            <td>Viewer</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use local jQuery and DataTables from Site.master -->
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#adminTable').DataTable();
+        });
+    </script>
+    <script>
+        // Simulate fetching new notification count
+        function updateNotificationCount(count) {
+            const badge = document.getElementById('notifCount');
+            badge.textContent = count;
+
+            if (count > 0) {
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        // Example: Set it to 5 after page load
+        document.addEventListener("DOMContentLoaded", function () {
+            updateNotificationCount(5); // Replace 5 with dynamic value from server
+        });
+    </script>
+
+</asp:Content>

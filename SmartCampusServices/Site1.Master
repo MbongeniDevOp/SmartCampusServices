@@ -84,6 +84,17 @@
                             runat="server" Visible="false" href="ViewSchedules.aspx" OnClick="lnkViewSchedules_Click">View Schedules</asp:LinkButton>
                     </li>
 
+                      <li class="nav-item dropdown">
+                          <asp:LinkButton ID="lnkNotifications" runat="server" CssClass="nav-link position-relative" OnClick="lnkNotifications_Click">
+                              <i class="fas fa-bell"></i>
+                              <span id="notifCount" runat="server" 
+                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                  Visible="false">0
+                              </span>
+                          </asp:LinkButton>
+                      </li>
+
+
                     <li class="nav-item">
                         <asp:LinkButton CssClass="nav-link" ID="lnkLogout" 
                             runat="server" OnClick="lnkLogout_Click" Visible="false">Logout</asp:LinkButton>

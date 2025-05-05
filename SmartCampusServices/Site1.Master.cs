@@ -31,5 +31,9 @@ namespace SmartCampusServices
         {
             Response.Redirect("~/AdminLogin.aspx");
         }
+
+        protected void lnkNotifications_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

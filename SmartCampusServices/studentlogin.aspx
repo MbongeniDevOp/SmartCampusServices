@@ -3,22 +3,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container" style="margin-top:60px;">
-        <div class="d-flex justify-content-center">
-            <div class="col-md-6 mx-auto">
-                <div class="card" style="width:250px;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <center>
-                                    <img src="imgs/login-3-svgrepo-com.svg" width="150"/>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container" style="margin-top: 60px;">
+        <h2 class="mt-3 mb-3">Student</h2>
+
+        <table id="scheduleTable" class="display table table-striped" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Courses</th>
+                    <th>Grades</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%-- You can bind rows using C# or server-side loop --%>
+                <asp:Literal ID="ltTableBody" runat="server" EnableViewState="false"></asp:Literal>
+            </tbody>
+        </table>
     </div>
+
 
 </asp:Content>

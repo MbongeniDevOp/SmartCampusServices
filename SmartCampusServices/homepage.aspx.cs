@@ -20,6 +20,7 @@ namespace SmartCampusServices
                     LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
                     LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
                     LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                    LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
                     Image imgLogin = (Image)Master.FindControl("imgLogin");
 
                     bool isUserLoggedIn = !string.IsNullOrEmpty(fullName);
@@ -29,6 +30,7 @@ namespace SmartCampusServices
                     viewSchedules.Visible = true;
                     logout.Visible = true;
                     helloUser.Visible = true;
+                    notificationBtn.Visible = true;
                     helloUser.Text = $"Hello, {fullName}";
                 }
             }

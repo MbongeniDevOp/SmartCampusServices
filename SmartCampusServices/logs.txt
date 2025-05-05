@@ -163,3 +163,6 @@ Exception Detail: Thread was being aborted.
 2025/04/29 20:00:37: Redirect Error...=>
 Exception Detail: Thread was being aborted.
 2025/04/29 20:00:37: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/03 15:21:48: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/03 15:22:50: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/03 15:23:03: Exception Caught: 42703: column "enrolment_date" does not exist
