@@ -19,7 +19,6 @@ namespace SmartCampusServices
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Validate input
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 DisplayMessage("Please enter both email and password.", isError: true);
@@ -29,44 +28,6 @@ namespace SmartCampusServices
 
             _logger.LogToFile($"Login attempt for email: {email}");
 
-            //try
-            //{
-            //    using (var conn = new NpgsqlConnection(_connString))
-            //    {
-            //        conn.Open();
-            //        _logger.LogToFile("Connected to database successfully.");
-
-            //        // Prepare query with parameters to prevent SQL injection
-            //        using (var cmd = new NpgsqlCommand("SELECT * FROM get_user_login(@p_email, @p_password)", conn))
-            //        {
-            //            cmd.Parameters.AddWithValue("p_email", email);
-            //            cmd.Parameters.AddWithValue("p_password", password);
-
-            //            using (var reader = cmd.ExecuteReader())
-            //            {
-            //                if (reader.Read())
-            //                {
-            //                    string fullName = reader["full_name"]?.ToString();
-            //                    string role = reader["role"]?.ToString();
-
-            //                    DisplayMessage($"Welcome {fullName} ({role})!", isError: false);
-            //                    _logger.LogToFile($"Login successful. User: {fullName} ({role})");
-            //                }
-            //                else
-            //                {
-            //                    DisplayMessage("Invalid email or password.", isError: true);
-            //                    _logger.LogToFile($"Login failed. Invalid credentials for email: {email}");
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    DisplayMessage($"Error: {ex.Message}", isError: true);
-            //    _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
-            //}
-
             try
             {
                 using (var conn = new NpgsqlConnection(_connString))
@@ -74,7 +35,6 @@ namespace SmartCampusServices
                     conn.Open();
                     _logger.LogToFile("Connected to database successfully.");
 
-                    // Inline SQL instead of calling function
                     string query = @"
             SELECT id, email, full_name, role
             FROM users
@@ -94,32 +54,36 @@ namespace SmartCampusServices
                             {
                                 string fullName = reader["full_name"]?.ToString();
                                 string role = reader["role"]?.ToString();
-
                                 DisplayMessage($"Welcome {fullName} ({role})!", isError: false);
 
-                                // Display appropriate page depending on who's logged in.
-                                if (role == "admin")
+                                // Set session variables
+                                Session["LoggedInEmail"] = email;
+                                Session["LoggedInPassword"] = password;
+                                Session["LoggedInFullName"] = fullName;
+                                Session["LoggedInRole"] = role;
+
+                                // Redirect based on role
+                                switch (role.ToLower())
                                 {
-                                    _logger.LogToFile($"Admin Login successful. User: {fullName} ({role})");
-                                    try
-                                    {
-                                        Session["LoggedInEmail"] = email;
-                                        Session["LoggedInPassword"] = password;
-                                        Session["LoggedInFullName"] = fullName;
-                                        Response.Redirect("https://localhost:44303/AdminLogin.aspx");
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        _logger.LogToFile($"Redirect Error...=>\nException Detail: {ex.Message}");
-                                    }
-                                }
-                                else if (role == "lecturer")
-                                {
-                                    _logger.LogToFile($"Lecturer Login successful. User: {fullName} ({role})");
-                                }
-                                else if (role == "student")
-                                {
-                                    _logger.LogToFile($"Student Login successful. User: {fullName} ({role})");
+                                    case "admin":
+                                        _logger.LogToFile($"Admin Login successful. User: {fullName} ({role})");
+                                        Response.Redirect("~/AdminLogin.aspx");
+                                        break;
+
+                                    case "lecturer":
+                                        _logger.LogToFile($"Lecturer Login successful. User: {fullName} ({role})");
+                                        Response.Redirect("~/LecturerPage.aspx");
+                                        break;
+
+                                    case "student":
+                                        _logger.LogToFile($"Student Login successful. User: {fullName} ({role})");
+                                        Response.Redirect("~/studentlogin.aspx");
+                                        break;
+
+                                    default:
+                                        DisplayMessage("Invalid role specified.", isError: true);
+                                        _logger.LogToFile($"Login failed due to unknown role: {role}");
+                                        break;
                                 }
                             }
                             else
@@ -136,8 +100,8 @@ namespace SmartCampusServices
                 DisplayMessage($"Error: {ex.Message}", isError: true);
                 _logger.LogToFile($"Exception: {ex.Message} | Stack Trace: {ex.StackTrace}");
             }
-
         }
+
 
         private static string GetConnectionString()
         {

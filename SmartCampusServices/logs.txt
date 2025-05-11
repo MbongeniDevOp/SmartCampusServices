@@ -166,3 +166,143 @@ Exception Detail: Thread was being aborted.
 2025/05/03 15:21:48: Exception Caught: 42703: column "enrolment_date" does not exist
 2025/05/03 15:22:50: Exception Caught: 42703: column "enrolment_date" does not exist
 2025/05/03 15:23:03: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/05 20:29:04: Login attempt for email: admin@tut.ac.za
+2025/05/05 20:29:05: Connected to database successfully.
+2025/05/05 20:29:05: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/05 20:29:05: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/05 20:29:05: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/05 20:33:08: Login attempt for email: admin@tut.ac.za
+2025/05/05 20:33:08: Connected to database successfully.
+2025/05/05 20:33:08: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/05 20:33:08: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/05 20:33:08: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/05 20:36:50: Login attempt for email: admin@tut.ac.za
+2025/05/05 20:36:50: Connected to database successfully.
+2025/05/05 20:36:50: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/05 20:36:50: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/05 20:36:50: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/08 10:18:06: Login attempt for email: admin@tut.ac.za
+2025/05/08 10:18:08: Connected to database successfully.
+2025/05/08 10:18:09: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/08 10:18:09: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/08 10:18:09: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:26:53: Login attempt for email: admin@tut.ac.za
+2025/05/11 08:26:55: Connected to database successfully.
+2025/05/11 08:26:55: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/11 08:26:55: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/11 08:26:55: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:32:56: Login attempt for email: admin@tut.ac.za
+2025/05/11 08:32:57: Connected to database successfully.
+2025/05/11 08:32:57: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/11 08:32:57: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/11 08:32:57: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:37:13: Login attempt for email: admin@tut.ac.za
+2025/05/11 08:37:14: Connected to database successfully.
+2025/05/11 08:37:14: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/11 08:37:14: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/11 08:37:14: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:37:52: Login attempt for email: admin@tut.ac.za
+2025/05/11 08:37:53: Connected to database successfully.
+2025/05/11 08:37:54: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/11 08:37:54: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/11 08:37:54: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:39:38: Login attempt for email: admin@tut.ac.za
+2025/05/11 08:39:39: Connected to database successfully.
+2025/05/11 08:39:39: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/11 08:39:39: Redirect Error...=>
+Exception Detail: Thread was being aborted.
+2025/05/11 08:39:39: Exception: Thread was being aborted. | Stack Trace:    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 114
+2025/05/11 08:54:07: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 08:54:08: Connected to database successfully.
+2025/05/11 08:54:08: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 08:54:08: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 08:55:11: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 08:55:12: Connected to database successfully.
+2025/05/11 08:55:12: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 08:55:12: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 08:58:06: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 08:58:07: Connected to database successfully.
+2025/05/11 08:58:07: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 08:58:07: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 09:00:14: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 09:00:15: Connected to database successfully.
+2025/05/11 09:00:15: Login failed. Invalid credentials for email: mbongz@smartcampus.com
+2025/05/11 09:00:26: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 09:00:26: Connected to database successfully.
+2025/05/11 09:00:26: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 09:00:26: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 09:12:54: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 09:12:55: Connected to database successfully.
+2025/05/11 09:12:55: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 09:12:55: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 09:12:55: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 09:31:04: Login attempt for email: jdoe@example.com
+2025/05/11 09:31:05: Connected to database successfully.
+2025/05/11 09:31:05: Lecturer Login successful. User: John Doe (lecturer)
+2025/05/11 09:31:05: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/11 09:32:11: Login attempt for email: jdoe@example.com
+2025/05/11 09:32:12: Connected to database successfully.
+2025/05/11 09:32:12: Lecturer Login successful. User: John Doe (lecturer)
+2025/05/11 09:32:12: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/11 09:32:14: Exception Caught: 42P01: relation "courses" does not exist
+2025/05/11 09:40:59: Login attempt for email: mbongz@smartcampus.com
+2025/05/11 09:41:00: Connected to database successfully.
+2025/05/11 09:41:00: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/11 09:41:00: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/11 09:41:01: Exception Caught: 42703: column "enrolment_date" does not exist

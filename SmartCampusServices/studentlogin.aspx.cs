@@ -1,17 +1,16 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class studentlogin : System.Web.UI.Page
+    public partial class StudentPage : System.Web.UI.Page
     {
         private Logger _logger = new Logger();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,28 +21,27 @@ namespace SmartCampusServices
 
         private void BindScheduleTable()
         {
-            // Get the connection string from the web.config file
             string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
             using (NpgsqlConnection conn = new NpgsqlConnection(connStr))
             {
                 try
                 {
                     string query = @"
-                                SELECT first_name || ' ' || last_name AS student_name, date_of_birth, phone_number, enrolment_date
-                                FROM students";
+                        SELECT first_name || ' ' || last_name AS student_name, 
+                               date_of_birth, 
+                               phone_number, 
+                               enrolment_date
+                        FROM students";
 
-                    // Set up the data adapter to fetch the data
                     using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn))
                     {
                         DataTable dt = new DataTable();
-                        da.Fill(dt);  // Fill the DataTable with data from the query
+                        da.Fill(dt);
 
                         StringBuilder sb = new StringBuilder();
 
-                        // Start the table
                         sb.Append("<table id='scheduleTable' class='display table table-striped' style='width: 100%'>");
 
-                        // Add the table header
                         sb.Append("<thead><tr>");
                         sb.Append("<th>Student Name</th>");
                         sb.Append("<th>Date of Birth</th>");
@@ -51,23 +49,21 @@ namespace SmartCampusServices
                         sb.Append("<th>Enrolment Date</th>");
                         sb.Append("</tr></thead>");
 
-                        // Add the table body with rows from the DataTable
                         sb.Append("<tbody>");
                         foreach (DataRow row in dt.Rows)
                         {
                             sb.Append("<tr>");
-                            sb.AppendFormat("<td>{0}</td>", row["student_name"]); // Correct column name
-                            sb.AppendFormat("<td>{0}</td>", row["date_of_birth"]); // Correct column name
-                            sb.AppendFormat("<td>{0}</td>", row["phone_number"]); // Correct column name
-                            sb.AppendFormat("<td>{0}</td>", row["enrolment_date"]); // Correct column name
+                            sb.AppendFormat("<td>{0}</td>", row["student_name"]);
+                            sb.AppendFormat("<td>{0}</td>", row["date_of_birth"]);
+                            sb.AppendFormat("<td>{0}</td>", row["phone_number"]);
+                            sb.AppendFormat("<td>{0}</td>", row["enrolment_date"]);
                             sb.Append("</tr>");
                         }
                         sb.Append("</tbody>");
 
-                        // Close the table
                         sb.Append("</table>");
 
-                        // Output the generated table HTML into the Literal control
+                        // Ensure the Literal control is set correctly
                         ltTableBody.Text = sb.ToString();
                     }
                 }
@@ -81,7 +77,6 @@ namespace SmartCampusServices
 
         private void InitialiseVisibilityLinks()
         {
-            // Handle visibility of master page links
             LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
             LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
             LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
@@ -110,7 +105,6 @@ namespace SmartCampusServices
                 helloUser.Visible = false;
             }
 
-            // Bind schedule table
             BindScheduleTable();
         }
     }

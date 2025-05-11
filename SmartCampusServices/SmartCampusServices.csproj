@@ -2233,6 +2233,7 @@
     <Content Include="imgs\university-svgrepo.svg" />
     <Content Include="imgs\v-lionel-_Lylye3fjYs-unsplash.jpg" />
     <Content Include="imgs\website-generic-svgrepo-com.svg" />
+    <Content Include="LecturerPage.aspx" />
     <Content Include="studentlogin.aspx" />
     <Content Include="TestLogin.aspx" />
     <Content Include="ViewSchedules.aspx" />
@@ -2253,6 +2254,13 @@
     </Compile>
     <Compile Include="homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LecturerPage.aspx.cs">
+      <DependentUpon>LecturerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LecturerPage.aspx.designer.cs">
+      <DependentUpon>LecturerPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
