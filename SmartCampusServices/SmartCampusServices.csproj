@@ -102,12 +102,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminLogin.aspx" />
+    <Content Include="Announcements.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
     <Content Include="custom_css\custom.css" />
     <Content Include="datatables\css\dataTables.dataTables.min.css" />
     <Content Include="datatables\js\dataTables.min.js" />
+    <Content Include="DeadlinesPage.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
     <Content Include="fontawesome\css\brands.css" />
@@ -2234,6 +2236,7 @@
     <Content Include="imgs\v-lionel-_Lylye3fjYs-unsplash.jpg" />
     <Content Include="imgs\website-generic-svgrepo-com.svg" />
     <Content Include="LecturerPage.aspx" />
+    <Content Include="MaintenanceRequests.aspx" />
     <Content Include="studentlogin.aspx" />
     <Content Include="TestLogin.aspx" />
     <Content Include="ViewSchedules.aspx" />
@@ -2247,6 +2250,20 @@
     </Compile>
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Announcements.aspx.cs">
+      <DependentUpon>Announcements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Announcements.aspx.designer.cs">
+      <DependentUpon>Announcements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeadlinesPage.aspx.cs">
+      <DependentUpon>DeadlinesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeadlinesPage.aspx.designer.cs">
+      <DependentUpon>DeadlinesPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
@@ -2263,6 +2280,13 @@
       <DependentUpon>LecturerPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
+    <Compile Include="MaintenanceRequests.aspx.cs">
+      <DependentUpon>MaintenanceRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaintenanceRequests.aspx.designer.cs">
+      <DependentUpon>MaintenanceRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
