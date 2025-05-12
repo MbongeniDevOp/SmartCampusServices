@@ -374,3 +374,35 @@ Exception Detail: Thread was being aborted.
    at System.Web.HttpResponse.Redirect(String url)
    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
 2025/05/11 13:11:39: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 19:51:43: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 19:54:47: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:05:27: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:10:53: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:17:02: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:19:53: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:20:56: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:23:27: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/11 20:25:14: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/12 19:29:54: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/12 19:31:23: Login attempt for email: admin@tut.ac.za
+2025/05/12 19:31:23: Connected to database successfully.
+2025/05/12 19:31:23: Admin Login successful. User: Mbongeni Nkosi (admin)
+2025/05/12 19:31:23: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 70
+2025/05/12 20:35:18: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/12 20:37:27: Login attempt for email: mbongz@smartcampus.com
+2025/05/12 20:37:27: Connected to database successfully.
+2025/05/12 20:37:27: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/12 20:37:27: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/12 20:37:27: Exception Caught: 42703: column "enrolment_date" does not exist

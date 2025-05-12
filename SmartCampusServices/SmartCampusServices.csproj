@@ -2213,6 +2213,7 @@
     <Content Include="imgs\announcement-megaphone-svgrepo-com.svg" />
     <Content Include="imgs\appointment-calendar-date-svgrepo-com.svg" />
     <Content Include="imgs\asia-culturecenter-COWf-5ZtZ6w-unsplash.jpg" />
+    <Content Include="imgs\enrollment-svgrepo-com.svg" />
     <Content Include="imgs\exam-svgrepo-com.svg" />
     <Content Include="imgs\exam-test-checklist-online-learning-education-online-document-svgrepo-com.svg" />
     <Content Include="imgs\general-office-repair-2-svgrepo-com.svg" />
@@ -2228,8 +2229,10 @@
     <Content Include="imgs\profile-user-svgrepo-com.svg" />
     <Content Include="imgs\report-svgrepo-com.svg" />
     <Content Include="imgs\schedule-svgrepo-com.svg" />
+    <Content Include="imgs\school-material-writer-svgrepo-com.svg" />
     <Content Include="imgs\student-dark-skin-tone-svgrepo-com.svg" />
     <Content Include="imgs\study-student-svgrepo-com.svg" />
+    <Content Include="imgs\studying-work-svgrepo-com.svg" />
     <Content Include="imgs\three-squares-svgrepo-com.svg" />
     <Content Include="imgs\university-svgrepo-com.svg" />
     <Content Include="imgs\university-svgrepo.svg" />
