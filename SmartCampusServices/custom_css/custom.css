@@ -18,3 +18,9 @@
 #footer2 a{
     text-decoration: none;
 }
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding-top: 80px; /* Add this to push content down */
+}

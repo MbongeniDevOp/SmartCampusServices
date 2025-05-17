@@ -579,3 +579,115 @@ Exception Detail: Thread was being aborted.
    at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
 2025/05/17 10:03:11: Exception in LoadDashboardData: 42P01: relation "activities" does not exist
 2025/05/17 10:03:11: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/17 10:17:00: Login attempt for email: mbongz@smartcampus.com
+2025/05/17 10:17:01: Connected to database successfully.
+2025/05/17 10:17:01: Student Login successful. User: Mbongeni Nkosi (student)
+2025/05/17 10:17:01: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 80
+2025/05/17 10:17:01: Exception in LoadDashboardData: 42P01: relation "activities" does not exist
+2025/05/17 10:17:01: Exception Caught: 42703: column "enrolment_date" does not exist
+2025/05/17 10:18:54: Login attempt for email: lwhite@example.com
+2025/05/17 10:18:54: Connected to database successfully.
+2025/05/17 10:18:54: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:18:54: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:19:57: Login attempt for email: lwhite@example.com
+2025/05/17 10:19:58: Connected to database successfully.
+2025/05/17 10:19:58: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:19:58: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:23:15: Login attempt for email: lwhite@example.com
+2025/05/17 10:23:16: Connected to database successfully.
+2025/05/17 10:23:16: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:23:16: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:26:49: Login attempt for email: lwhite@example.com
+2025/05/17 10:26:50: Connected to database successfully.
+2025/05/17 10:26:50: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:26:50: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:40:15: Login attempt for email: lwhite@example.com
+2025/05/17 10:40:16: Connected to database successfully.
+2025/05/17 10:40:16: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:40:16: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:41:59: Login attempt for email: lwhite@example.com
+2025/05/17 10:42:00: Connected to database successfully.
+2025/05/17 10:42:00: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:42:00: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:50:08: Login attempt for email: lwhite@example.com
+2025/05/17 10:50:09: Connected to database successfully.
+2025/05/17 10:50:09: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:50:09: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:51:46: Login attempt for email: lwhite@example.com
+2025/05/17 10:51:47: Connected to database successfully.
+2025/05/17 10:51:47: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:51:47: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 10:59:37: Login attempt for email: lwhite@example.com
+2025/05/17 10:59:38: Connected to database successfully.
+2025/05/17 10:59:38: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 10:59:38: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75
+2025/05/17 11:00:25: Login attempt for email: lwhite@example.com
+2025/05/17 11:00:26: Connected to database successfully.
+2025/05/17 11:00:26: Lecturer Login successful. User: Linda White (lecturer)
+2025/05/17 11:00:26: Exception: Thread was being aborted. | Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SmartCampusServices.TestLogin.btnLogin_Click(Object sender, EventArgs e) in C:\Users\mnkosi\Music\Advanced Diploma Computer Science\Project_SFG\SmartCampusServices\SmartCampusServices\TestLogin.aspx.cs:line 75

@@ -1,77 +1,105 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Web.Services;
 using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class LecturerProfile : System.Web.UI.Page
+    public partial class LecturerPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            // Redirect to login if no session
+            if (Session["LoggedInFullname"] == null)
             {
-                LoadLecturerProfile();
+                Response.Redirect("TestLogin.aspx");
             }
         }
 
-        private void LoadLecturerProfile()
+        [WebMethod]
+        public static object GetDashboardData(string type)
         {
-            txtFullName.Text = Session["LoggedInFullName"]?.ToString();
-            txtEmail.Text = Session["LoggedInEmail"]?.ToString();
-        }
-
-        protected void btnSaveChanges_Click(object sender, EventArgs e)
-        {
-            if (txtNewPassword.Text != txtConfirmPassword.Text)
-            {
-                DisplayMessage("Passwords do not match.", true);
-                return;
-            }
-
+            string lecturerID ="0";
             try
             {
-                string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
+                lecturerID = Convert.ToInt32(System.Web.HttpContext.Current.Session["LecturerID"]).ToString();
+            }
+            catch
+            {
+                return new { Error = "Session expired. Please log in again." };
+            }
 
-                using (var conn = new NpgsqlConnection(connStr))
+            var connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
+
+            var result = new
+            {
+                Courses = 0,
+                Assessments = 0,
+                Students = 0,
+                //Deadlines = 0,
+                CourseList = new List<object>()
+            };
+
+            using (var conn = new NpgsqlConnection(connStr))
+            {
+                conn.Open();
+
+                int courses = ExecuteScalarInt(conn, "SELECT COUNT(*) FROM course WHERE lecturer_id = @lecturerID", lecturerID);
+                int assessments = ExecuteScalarInt(conn, "SELECT COUNT(*) FROM assignments WHERE lecturer_id = @lecturerID AND status = 'Pending'", lecturerID);
+                int students = ExecuteScalarInt(conn, "SELECT COUNT(DISTINCT student_id) FROM enrollments WHERE lecturer_id = @lecturerID", lecturerID);
+                //int deadlines = ExecuteScalarInt(conn,
+                //    "SELECT COUNT(*) FROM deadlines WHERE lecturer_id = @lecturerID AND deadline_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'",
+                //    lecturerID);
+
+                var coursesList = new List<object>();
+                string sqlCourseList = @"
+                    SELECT course_id, course_name, course_code, department
+                    FROM course";
+
+                using (var cmd = new NpgsqlCommand(sqlCourseList, conn))
                 {
-                    conn.Open();
-                    string query = "UPDATE lecturers SET email = @p_email, password = @p_password WHERE lecturer_id = @p_lecturerID";
-
-                    using (var cmd = new NpgsqlCommand(query, conn))
+                    cmd.Parameters.AddWithValue("lecturerID", lecturerID);
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("p_email", txtEmail.Text.Trim());
-                        cmd.Parameters.AddWithValue("p_password", txtNewPassword.Text.Trim());
-                        cmd.Parameters.AddWithValue("p_lecturerID", Convert.ToInt32(Session["LecturerID"]));
-
-                        int rows = cmd.ExecuteNonQuery();
-                        if (rows > 0)
+                        while (reader.Read())
                         {
-                            DisplayMessage("Profile updated successfully.", false);
-                            Session["LoggedInEmail"] = txtEmail.Text.Trim();
-                        }
-                        else
-                        {
-                            DisplayMessage("Failed to update profile.", true);
+                            coursesList.Add(new
+                            {
+                                CourseID = reader["course_id"],
+                                CourseName = reader["course_name"],
+                                CourseCode = reader["course_code"],
+                                Department = reader["department"]
+                            });
                         }
                     }
                 }
+
+                result = new
+                {
+                    Courses = courses,
+                    Assessments = assessments,
+                    Students = students,
+                    //Deadlines = deadlines,
+                    CourseList = coursesList
+                };
             }
-            catch (Exception ex)
+
+            return result;
+        }
+
+        private static int ExecuteScalarInt(NpgsqlConnection conn, string sql, string lecturerID)
+        {
+            using (var cmd = new NpgsqlCommand(sql, conn))
             {
-                DisplayMessage($"Error: {ex.Message}", true);
+                cmd.Parameters.AddWithValue("lecturerID", lecturerID);
+                var val = cmd.ExecuteScalar();
+                if (val != null && int.TryParse(val.ToString(), out int count))
+                {
+                    return count;
+                }
+                return 0;
             }
-        }
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            LoadLecturerProfile();
-        }
-
-        private void DisplayMessage(string message, bool isError)
-        {
-            lblMessage.CssClass = isError ? "alert alert-danger" : "alert alert-success";
-            lblMessage.Text = message;
-            lblMessage.Visible = true;
         }
     }
 }
