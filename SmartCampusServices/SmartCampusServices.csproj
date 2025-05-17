@@ -2244,6 +2244,7 @@
     <Content Include="MaintenanceRequests.aspx" />
     <Content Include="studentlogin.aspx" />
     <Content Include="TestLogin.aspx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="ViewSchedules.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
@@ -2327,6 +2328,13 @@
     </Compile>
     <Compile Include="TestLogin.aspx.designer.cs">
       <DependentUpon>TestLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSchedules.aspx.cs">
       <DependentUpon>ViewSchedules.aspx</DependentUpon>

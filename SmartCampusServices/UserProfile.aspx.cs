@@ -1,23 +1,25 @@
 ﻿using System;
-using System.Configuration;
 using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class LecturerProfile : System.Web.UI.Page
+    public partial class UserProfile : System.Web.UI.Page
     {
+        private static readonly string _connString = GetConnectionString();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LoadLecturerProfile();
+                LoadUserProfile();
             }
         }
 
-        private void LoadLecturerProfile()
+        private void LoadUserProfile()
         {
             txtFullName.Text = Session["LoggedInFullName"]?.ToString();
             txtEmail.Text = Session["LoggedInEmail"]?.ToString();
+            txtRole.Text = Session["LoggedInRole"]?.ToString();
         }
 
         protected void btnSaveChanges_Click(object sender, EventArgs e)
@@ -30,18 +32,16 @@ namespace SmartCampusServices
 
             try
             {
-                string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
-
-                using (var conn = new NpgsqlConnection(connStr))
+                using (var conn = new NpgsqlConnection(_connString))
                 {
                     conn.Open();
-                    string query = "UPDATE lecturers SET email = @p_email, password = @p_password WHERE lecturer_id = @p_lecturerID";
+                    string query = "UPDATE users SET email = @p_email, password = @p_password WHERE email = @p_oldEmail";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("p_email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("p_password", txtNewPassword.Text.Trim());
-                        cmd.Parameters.AddWithValue("p_lecturerID", Convert.ToInt32(Session["LecturerID"]));
+                        cmd.Parameters.AddWithValue("p_oldEmail", Session["LoggedInEmail"]);
 
                         int rows = cmd.ExecuteNonQuery();
                         if (rows > 0)
@@ -64,7 +64,12 @@ namespace SmartCampusServices
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            LoadLecturerProfile();
+            LoadUserProfile();
+        }
+
+        private static string GetConnectionString()
+        {
+            return System.Configuration.ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
         }
 
         private void DisplayMessage(string message, bool isError)

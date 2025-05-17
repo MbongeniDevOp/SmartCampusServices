@@ -14,22 +14,22 @@
         <!-- Vertical Line -->
         <div style="border-left: 2px solid #ccc; height: 100%;"></div>
 
-        <!-- Announcement Content -->
+        <<!-- Announcement Content -->
         <div style="flex: 3; padding-left: 20px;">
             <h3 style="margin-bottom: 10px;">Latest Announcements</h3>
             <p style="font-size: 1.1rem; line-height: 1.6;">
                 Here you will find the latest updates and announcements related to Smart Campus Services.
-                Stay tuned for important notices and community news. 
+        Stay tuned for important notices and community news. 
             </p>
 
-            <!-- Example list of announcements -->
             <ul style="list-style-type: disc; margin-left: 20px;">
-                <li>New semester registration is now open.</li>
-                <li>Library hours extended during exam season.</li>
-                <li>Upcoming maintenance on the campus network.</li>
+                <%-- This is where the announcements will render dynamically --%>
+                <asp:Literal ID="ltAnnouncements" runat="server" EnableViewState="false"></asp:Literal>
             </ul>
         </div>
+
     </section>
+
 </asp:Content>
 
 

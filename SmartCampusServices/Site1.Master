@@ -74,7 +74,7 @@
                             OnClick="lnkHelloUser_Click">
                             Hello User
                         </asp:LinkButton>
-                        <asp:LinkButton ID="lnkProfile" runat="server" PostBackUrl="~/AdminLogin.aspx">
+                        <asp:LinkButton ID="lnkProfile" runat="server" PostBackUrl="~/UserProfile.aspx">
                             <asp:Image ID="imgLogin" runat="server" Visible="false" ImageUrl="imgs/profile-user-svgrepo-com.svg"
                                  style="width:30px; height:30px;" CssClass="img-fluid" />
                         </asp:LinkButton>

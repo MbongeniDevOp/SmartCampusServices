@@ -57,9 +57,9 @@ namespace SmartCampusServices
                 string query = @"
         SELECT cs.class_id, r.room_name, cs.day_of_week, cs.start_time, cs.end_time, 
                c.course_name, u.full_name AS instructor, cs.academic_year, cs.max_students
-        FROM ""Class_Schedules"" cs
-        JOIN ""Course"" c ON cs.course_id = c.course_id
-        JOIN ""Rooms"" r ON cs.room_id = r.room_id
+        FROM class_schedules cs
+        JOIN course c ON cs.course_id = c.course_id
+        JOIN rooms r ON cs.room_id = r.room_id
         JOIN users u ON cs.instructor_id = u.id";
 
                 using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn))
