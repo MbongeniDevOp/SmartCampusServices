@@ -1,99 +1,153 @@
-﻿<%@ Page Title="Student Dashboard" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="studentlogin.aspx.cs" Inherits="SmartCampusServices.StudentPage" %>
+﻿<%@ Page Title="Student Dashboard" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="StudentDashboard.aspx.cs" Inherits="SmartCampusServices.StudentDashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .card {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .modal-body {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-    </style>
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="container mt-5 pt-5">
         <h2 class="text-center mb-4">Student Dashboard</h2>
-
-        <div class="text-right mb-3">
-            <asp:Button ID="btnRefresh" runat="server" Text="Refresh Data" CssClass="btn btn-primary" OnClick="btnRefresh_Click" />
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-danger ml-2" OnClick="btnLogout_Click" />
-        </div>
 
         <!-- Dashboard Cards -->
         <div class="row text-center mb-5">
             <div class="col-md-3">
-                <div class="card shadow-sm p-3" onclick="showDetails('courses')">
+                <div class="card shadow-sm p-3 card-link" id="btnCourses">
                     <h5>Enrolled Courses</h5>
-                    <p class="display-4" id="coursesCount"><%= CoursesCount %></p>
+                    <p class="display-4" id="coursesCount">0</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card shadow-sm p-3" onclick="showDetails('exams')">
+                <div class="card shadow-sm p-3 card-link" id="btnExams">
                     <h5>Upcoming Exams</h5>
-                    <p class="display-4" id="examsCount"><%= ExamsCount %></p>
+                    <p class="display-4" id="examsCount">0</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card shadow-sm p-3" onclick="showDetails('assignments')">
+                <div class="card shadow-sm p-3 card-link" id="btnAssignments">
                     <h5>Assignments Pending</h5>
-                    <p class="display-4" id="assignmentsCount"><%= AssignmentsCount %></p>
+                    <p class="display-4" id="assignmentsCount">0</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card shadow-sm p-3" onclick="showDetails('announcements')">
+                <div class="card shadow-sm p-3 card-link" id="btnAnnouncements">
                     <h5>Announcements</h5>
-                    <p class="display-4" id="announcementsCount"><%= AnnouncementsCount %></p>
+                    <p class="display-4" id="announcementsCount">0</p>
                 </div>
             </div>
         </div>
 
-        <!-- Details Section -->
-        <div id="detailsSection" class="mt-4"></div>
-
-        <!-- DataTable for Student Activities or Courses -->
-        <div class="card">
+        <!-- DataTables -->
+        <div class="card" style="display:none;">
             <div class="card-body">
-                <h4>Your Activities</h4>
-                <table id="studentTable" class="table table-bordered table-striped">
+                <table id="dataTable" class="table table-bordered table-striped" style="width:100%">
                     <thead>
-                        <tr>
-                            <th>Activity ID</th>
-                            <th>Activity Name</th>
-                            <th>Due Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
+                        <tr id="tableHeaders"></tr>
                     </thead>
-                    <tbody>
-                        <%--ActivitiesTableRows--%>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
-
-        <!-- Literal Control for Schedule Table -->
-        <asp:Literal ID="ltTableBody" runat="server"></asp:Literal>
     </div>
 
     <script>
-        // Function to show detailed info based on card clicked
-        function showDetails(type) {
-            fetch('StudentDataHandler.ashx?type=' + type)
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('detailsSection').innerHTML = html;
-                })
-                .catch(err => {
-                    document.getElementById('detailsSection').innerHTML = '<p class="text-danger">Error loading details.</p>';
+        let activeCardId = null;
+        let table = null;
+
+        $('.card-link').on('click', function () {
+            const clickedId = this.id;
+
+            if (activeCardId === clickedId) {
+                $('#dataTable').closest('.card').toggle();
+                return;
+            }
+
+            activeCardId = clickedId;
+            $('#dataTable').closest('.card').show();
+
+            if (table) {
+                table.clear().destroy();
+                table = null;
+            }
+
+            $('#dataTable thead').empty();
+            $('#dataTable tbody').empty();
+
+            let headers = '';
+            switch (clickedId) {
+                case 'btnCourses':
+                    headers = `<tr><th>Course ID</th><th>Course Name</th><th>Credits</th><th>Instructor</th></tr>`;
+                    loadCourses();
+                    break;
+                case 'btnExams':
+                    headers = `<tr><th>Exam ID</th><th>Course</th><th>Date</th><th>Location</th></tr>`;
+                    loadExams();
+                    break;
+                case 'btnAssignments':
+                    headers = `<tr><th>Assignment ID</th><th>Course</th><th>Due Date</th><th>Status</th></tr>`;
+                    loadAssignments();
+                    break;
+                case 'btnAnnouncements':
+                    headers = `<tr><th>ID</th><th>Title</th><th>Publish Date</th><th>Details</th></tr>`;
+                    loadAnnouncements();
+                    break;
+            }
+            $('#dataTable thead').append(headers);
+        });
+
+        function loadCourses() {
+            const data = [
+                { CourseID: 101, CourseName: 'Mathematics', Credits: 3, Instructor: 'Dr. Smith' },
+                { CourseID: 102, CourseName: 'Physics', Credits: 4, Instructor: 'Prof. Johnson' }
+            ];
+            populateTable(data, ['CourseID', 'CourseName', 'Credits', 'Instructor']);
+        }
+
+        function loadExams() {
+            const data = [
+                { ExamID: 201, Course: 'Mathematics', Date: '2025-06-01', Location: 'Hall A' },
+                { ExamID: 202, Course: 'Physics', Date: '2025-06-15', Location: 'Hall B' }
+            ];
+            populateTable(data, ['ExamID', 'Course', 'Date', 'Location']);
+        }
+
+        function loadAssignments() {
+            const data = [
+                { AssignmentID: 301, Course: 'Mathematics', DueDate: '2025-05-30', Status: 'Pending' },
+                { AssignmentID: 302, Course: 'Physics', DueDate: '2025-06-10', Status: 'Completed' }
+            ];
+            populateTable(data, ['AssignmentID', 'Course', 'DueDate', 'Status']);
+        }
+
+        function loadAnnouncements() {
+            const data = [
+                { ID: 401, Title: 'Exam Schedule Released', PublishDate: '2025-05-20', Details: 'Check the portal.' },
+                { ID: 402, Title: 'Semester Break Notice', PublishDate: '2025-05-15', Details: 'Classes will resume on June 5.' }
+            ];
+            populateTable(data, ['ID', 'Title', 'PublishDate', 'Details']);
+        }
+
+        function populateTable(data, columns) {
+            const tbody = $('#dataTable tbody');
+            tbody.empty();
+
+            data.forEach(row => {
+                let tr = '<tr>';
+                columns.forEach(col => {
+                    tr += `<td>${row[col] !== undefined ? row[col] : ''}</td>`;
                 });
+                tr += '</tr>';
+                tbody.append(tr);
+            });
+
+            table = $('#dataTable').DataTable({
+                paging: true,
+                searching: true,
+                info: true,
+                autoWidth: false,
+                lengthChange: false
+            });
         }
     </script>
-
 </asp:Content>

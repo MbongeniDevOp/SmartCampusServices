@@ -8,7 +8,7 @@ using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class StudentPage : System.Web.UI.Page
+    public partial class StudentPage
     {
         private Logger _logger = new Logger();
 
@@ -192,7 +192,7 @@ namespace SmartCampusServices
                         sb.Append("</table>");
 
                         // Ensure the Literal control is set correctly
-                        ltTableBody.Text = sb.ToString();
+                       // ltTableBody.Text = sb.ToString();
                     }
                 }
                 catch (Exception ex)

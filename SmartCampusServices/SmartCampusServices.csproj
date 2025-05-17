@@ -2243,6 +2243,7 @@
     <Content Include="LecturerPage.aspx" />
     <Content Include="MaintenanceRequests.aspx" />
     <Content Include="studentlogin.aspx" />
+    <Content Include="Terms.aspx" />
     <Content Include="TestLogin.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="ViewSchedules.aspx" />
@@ -2317,10 +2318,16 @@
     </Compile>
     <Compile Include="studentlogin.aspx.cs">
       <DependentUpon>studentlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="studentlogin.aspx.designer.cs">
       <DependentUpon>studentlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Terms.aspx.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Terms.aspx.designer.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestLogin.aspx.cs">
       <DependentUpon>TestLogin.aspx</DependentUpon>

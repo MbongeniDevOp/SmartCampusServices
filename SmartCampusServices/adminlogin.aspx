@@ -15,25 +15,25 @@
             <div class="col-md-3">
                 <div class="card shadow-sm p-3 card-link" id="btnUsers">
                     <h5>Users</h5>
-                    <p class="display-4" id="usersCount">0</p>
+                    <p class="display-4" id="usersCount">2</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card shadow-sm p-3 card-link" id="btnBookings">
                     <h5>Bookings</h5>
-                    <p class="display-4" id="bookingsCount">0</p>
+                    <p class="display-4" id="bookingsCount">2</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card shadow-sm p-3 card-link" id="btnMaintenance">
                     <h5>Maintenance Issues</h5>
-                    <p class="display-4" id="maintenanceCount">0</p>
+                    <p class="display-4" id="maintenanceCount">2</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card shadow-sm p-3 card-link" id="btnAnnouncements">
                     <h5>Announcements</h5>
-                    <p class="display-4" id="announcementsCount">0</p>
+                    <p class="display-4" id="announcementsCount">2</p>
                 </div>
             </div>
         </div>

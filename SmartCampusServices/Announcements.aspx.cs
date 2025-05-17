@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.UI.WebControls;
 using Npgsql;
 
-namespace SmartCampusServices.PreMaster
+namespace SmartCampusServices
 {
     public partial class Announcements : System.Web.UI.Page
     {
@@ -61,13 +61,13 @@ namespace SmartCampusServices.PreMaster
                     }
 
                     // **Here** we reference the Literal control declared in the .aspx
-                    ltAnnouncements.Text = sb.ToString();
+                    //ltAnnouncements.Text = sb.ToString();
                 }
                 catch (Exception ex)
                 {
                     _logger.LogToFile($"Exception Caught: {ex.Message}");
                     // User-friendly fallback:
-                    ltAnnouncements.Text = "<li>Unable to load announcements.</li>";
+                    //ltAnnouncements.Text = "<li>Unable to load announcements.</li>";
                 }
             }
         }
