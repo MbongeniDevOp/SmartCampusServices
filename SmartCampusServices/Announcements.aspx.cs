@@ -5,92 +5,97 @@ using System.Text;
 using System.Web.UI.WebControls;
 using Npgsql;
 
-namespace SmartCampusServices
+namespace SmartCampusServices.PreMaster
 {
     public partial class Announcements : System.Web.UI.Page
     {
-        private Logger _logger = new Logger();
+        private readonly Logger _logger = new Logger();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 InitialiseVisibilityLinks();
+                BindAnnouncements();
             }
         }
 
-        private void BindScheduleTable()
+        private void BindAnnouncements()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
-            using (NpgsqlConnection conn = new NpgsqlConnection(connStr))
+            string connStr = ConfigurationManager
+                .ConnectionStrings["PostgresConnection"]
+                .ConnectionString;
+
+            using (var conn = new NpgsqlConnection(connStr))
             {
                 try
                 {
-                    string query = @"SELECT title, content, publish_date FROM announcements";
+                    const string sql = @"
+                        SELECT title, content, publish_date
+                          FROM announcements
+                         ORDER BY publish_date DESC";
 
-                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn))
-                    {
-                        DataTable dt = new DataTable();
+                    var dt = new DataTable();
+                    using (var da = new NpgsqlDataAdapter(sql, conn))
                         da.Fill(dt);
 
-                        StringBuilder sb = new StringBuilder();
-
+                    var sb = new StringBuilder();
+                    if (dt.Rows.Count == 0)
+                    {
+                        sb.Append("<li>No announcements available.</li>");
+                    }
+                    else
+                    {
                         foreach (DataRow row in dt.Rows)
                         {
                             sb.Append("<li>");
-                            sb.AppendFormat("<strong>{0}</strong> - {1} <br/><em>Published on: {2}</em>",
+                            sb.AppendFormat(
+                                "<strong>{0}</strong> – {1}<br/><em>Published on: {2}</em>",
                                 row["title"],
                                 row["content"],
-                                Convert.ToDateTime(row["publish_date"]).ToString("yyyy-MM-dd")
+                                Convert.ToDateTime(row["publish_date"])
+                                       .ToString("yyyy-MM-dd")
                             );
                             sb.Append("</li>");
                         }
-
-                        // Bind the Literal content and force it to render
-                        ltAnnouncements.Text = sb.ToString();
-                        ltAnnouncements.DataBind();
                     }
+
+                    // **Here** we reference the Literal control declared in the .aspx
+                    ltAnnouncements.Text = sb.ToString();
                 }
                 catch (Exception ex)
                 {
                     _logger.LogToFile($"Exception Caught: {ex.Message}");
-                    Response.Write("Exception error... Refer to log file...");
+                    // User-friendly fallback:
+                    ltAnnouncements.Text = "<li>Unable to load announcements.</li>";
                 }
             }
         }
 
         private void InitialiseVisibilityLinks()
         {
-            LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
-            LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
-            LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
-            LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
-            LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
-            Image imgLogin = (Image)Master.FindControl("imgLogin");
+            var logout = (LinkButton)Master.FindControl("lnkLogout");
+            var helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+            var login = (LinkButton)Master.FindControl("lnkLogin");
+            var viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+            var notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
+            var imgLogin = (Image)Master.FindControl("imgLogin");
 
-            string fullName = Session["LoggedInFullName"]?.ToString();
+            string fullName = Session["LoggedInFullName"] as string;
+            bool isLoggedIn = !string.IsNullOrEmpty(fullName);
 
-            if (!string.IsNullOrEmpty(fullName))
-            {
-                login.Visible = false;
-                viewSchedules.Visible = true;
-                logout.Visible = true;
-                helloUser.Visible = true;
+            login.Visible = !isLoggedIn;
+            viewSchedules.Visible = isLoggedIn;
+            logout.Visible = isLoggedIn;
+            helloUser.Visible = isLoggedIn;
+            notificationBtn.Visible = isLoggedIn;
+            imgLogin.Visible = isLoggedIn;
+
+            if (isLoggedIn)
                 helloUser.Text = $"Hello, {fullName}";
-                bool isUserLoggedIn = !string.IsNullOrEmpty(fullName);
-                imgLogin.Visible = isUserLoggedIn;
-                notificationBtn.Visible = true;
-            }
-            else
-            {
-                login.Visible = true;
-                viewSchedules.Visible = false;
-                logout.Visible = false;
-                helloUser.Visible = false;
-            }
-
-            // Bind the list after visibility links are initialized
-            BindScheduleTable();
         }
+
+        // This field is auto-generated by ASP.NET when you build; do NOT declare manually:
+        protected Literal ltAnnouncements;
     }
 }

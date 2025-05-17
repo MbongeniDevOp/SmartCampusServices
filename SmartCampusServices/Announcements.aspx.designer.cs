@@ -7,20 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SmartCampusServices
+namespace SmartCampusServices.PreMaster
 {
 
 
     public partial class Announcements
     {
-
-        /// <summary>
-        /// ltAnnouncements control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltAnnouncements;
     }
 }
