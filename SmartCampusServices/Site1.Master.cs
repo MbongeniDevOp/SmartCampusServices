@@ -35,5 +35,28 @@ namespace SmartCampusServices
         protected void lnkNotifications_Click(object sender, EventArgs e)
         {
         }
+
+        protected void lnkProfile_Click(object sender, EventArgs e)
+        {
+            string role = Session["LoggedInRole"]?.ToString();
+
+            // Redirect based on role
+            switch (role)
+            {
+                case "admin":
+                    Response.Redirect("~/AdminProfile.aspx");
+                    break;
+                case "lecturer":
+                    Response.Redirect("~/LecturerProfile.aspx");
+                    break;
+                case "student":
+                    Response.Redirect("~/UserProfile.aspx");
+                    break;
+                default:
+                    // Optional: Redirect to a login page or error page if the role is not recognized
+                    Response.Redirect("~/TestLogin.aspx");
+                    break;
+            }
+        }
     }
 }

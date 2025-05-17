@@ -3,16 +3,18 @@ using System.Configuration;
 using System.Data;
 using System.Text;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class StudentPage
+    public partial class studentlogin : Page
     {
+        // Logger definition - Create a basic one if you don't have it
         private Logger _logger = new Logger();
 
-        // Properties to expose counts to the ASPX page
+        // Dashboard Counts
         public int CoursesCount { get; set; } = 0;
         public int ExamsCount { get; set; } = 0;
         public int AssignmentsCount { get; set; } = 0;
@@ -21,8 +23,7 @@ namespace SmartCampusServices
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if user is logged in
-            if (Session["LoggedInFullname"] == null)
+            if (Session["LoggedInFullName"] == null)
             {
                 Response.Redirect("~/TestLogin.aspx");
                 return;
@@ -32,12 +33,14 @@ namespace SmartCampusServices
             {
                 LoadDashboardData();
                 InitialiseVisibilityLinks();
+                Page.DataBind(); // <-- This will bind your properties to the ASPX page
             }
         }
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadDashboardData();
+            Page.DataBind();
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
@@ -56,13 +59,11 @@ namespace SmartCampusServices
                 {
                     conn.Open();
 
-                    // 1. Get counts
-                    CoursesCount = GetCount(conn, $"SELECT COUNT(*) FROM enrollments WHERE student_id = {studentId}");
-                    ExamsCount = GetCount(conn, $"SELECT COUNT(*) FROM exams WHERE course_id IN (SELECT course_id FROM enrollments WHERE student_id = {studentId}) AND exam_date >= CURRENT_DATE");
-                    AssignmentsCount = GetCount(conn, $"SELECT COUNT(*) FROM assignments WHERE course_id IN (SELECT course_id FROM enrollments WHERE student_id = {studentId}) AND due_date >= CURRENT_DATE AND status = 'Pending'");
+                    CoursesCount = GetCount(conn, "SELECT COUNT(*) FROM enrollments WHERE student_id = @studentId", studentId);
+                    ExamsCount = GetCount(conn, "SELECT COUNT(*) FROM exams WHERE course_id IN (SELECT course_id FROM enrollments WHERE student_id = @studentId) AND exam_date >= CURRENT_DATE", studentId);
+                    AssignmentsCount = GetCount(conn, "SELECT COUNT(*) FROM assignments WHERE course_id IN (SELECT course_id FROM enrollments WHERE student_id = @studentId) AND due_date >= CURRENT_DATE AND status = 'Pending'", studentId);
                     AnnouncementsCount = GetCount(conn, "SELECT COUNT(*) FROM announcements WHERE publish_date >= CURRENT_DATE");
 
-                    // 2. Load activities table rows
                     ActivitiesTableRows = GetActivitiesTableRows(conn, studentId);
                 }
             }
@@ -72,10 +73,13 @@ namespace SmartCampusServices
             }
         }
 
-        private int GetCount(NpgsqlConnection conn, string query)
+        private int GetCount(NpgsqlConnection conn, string query, int studentId = 0)
         {
             using (var cmd = new NpgsqlCommand(query, conn))
             {
+                if (studentId > 0)
+                    cmd.Parameters.AddWithValue("@studentId", studentId);
+
                 var result = cmd.ExecuteScalar();
                 return result != DBNull.Value ? Convert.ToInt32(result) : 0;
             }
@@ -115,91 +119,40 @@ namespace SmartCampusServices
 
         private void InitialiseVisibilityLinks()
         {
-            LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
-            LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
-            LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
-            LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
-            LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
-            Image imgLogin = (Image)Master.FindControl("imgLogin");
-
-            string fullName = Session["LoggedInFullName"]?.ToString();
-
-            if (!string.IsNullOrEmpty(fullName))
+            try
             {
-                login.Visible = false;
-                viewSchedules.Visible = true;
-                logout.Visible = true;
-                helloUser.Visible = true;
-                helloUser.Text = $"Hello, {fullName}";
-                imgLogin.Visible = true;
-                notificationBtn.Visible = true;
-            }
-            else
-            {
-                login.Visible = true;
-                viewSchedules.Visible = false;
-                logout.Visible = false;
-                helloUser.Visible = false;
-                imgLogin.Visible = false;
-                notificationBtn.Visible = false;
-            }
+                LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
+                LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+                LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+                LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+                LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
+                Image imgLogin = (Image)Master.FindControl("imgLogin");
 
-            BindScheduleTable();
-        }
+                string fullName = Session["LoggedInFullName"]?.ToString();
 
-        private void BindScheduleTable()
-        {
-            string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
-            using (NpgsqlConnection conn = new NpgsqlConnection(connStr))
-            {
-                try
+                if (!string.IsNullOrEmpty(fullName))
                 {
-                    string query = @"
-                        SELECT first_name || ' ' || last_name AS student_name, 
-                               date_of_birth, 
-                               phone_number, 
-                               enrolment_date
-                        FROM students";
-
-                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        StringBuilder sb = new StringBuilder();
-
-                        sb.Append("<table id='scheduleTable' class='display table table-striped' style='width: 100%'>");
-
-                        sb.Append("<thead><tr>");
-                        sb.Append("<th>Student Name</th>");
-                        sb.Append("<th>Date of Birth</th>");
-                        sb.Append("<th>Phone Number</th>");
-                        sb.Append("<th>Enrolment Date</th>");
-                        sb.Append("</tr></thead>");
-
-                        sb.Append("<tbody>");
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            sb.Append("<tr>");
-                            sb.AppendFormat("<td>{0}</td>", row["student_name"]);
-                            sb.AppendFormat("<td>{0:yyyy-MM-dd}</td>", row["date_of_birth"]);
-                            sb.AppendFormat("<td>{0}</td>", row["phone_number"]);
-                            sb.AppendFormat("<td>{0:yyyy-MM-dd}</td>", row["enrolment_date"]);
-                            sb.Append("</tr>");
-                        }
-                        sb.Append("</tbody>");
-
-                        sb.Append("</table>");
-
-                        // Ensure the Literal control is set correctly
-                       // ltTableBody.Text = sb.ToString();
-                    }
+                    login.Visible = false;
+                    viewSchedules.Visible = true;
+                    logout.Visible = true;
+                    helloUser.Visible = true;
+                    helloUser.Text = $"Hello, {fullName}";
+                    imgLogin.Visible = true;
+                    notificationBtn.Visible = true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    _logger.LogToFile($"Exception Caught: {ex.Message}");
-                    Response.Write("Exception error... Refer to log file...");
+                    login.Visible = true;
+                    viewSchedules.Visible = false;
+                    logout.Visible = false;
+                    helloUser.Visible = false;
+                    imgLogin.Visible = false;
+                    notificationBtn.Visible = false;
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogToFile($"Error in InitialiseVisibilityLinks: {ex.Message}");
             }
         }
     }

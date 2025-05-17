@@ -11,7 +11,7 @@ namespace SmartCampusServices
 {
 
 
-    public partial class StudentDashboard
+    public partial class studentlogin
     {
     }
 }

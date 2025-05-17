@@ -4,21 +4,20 @@ using Npgsql;
 
 namespace SmartCampusServices
 {
-    public partial class UserProfile : System.Web.UI.Page
+    public partial class LecturerProfile : System.Web.UI.Page
     {
         private static readonly string _connString = GetConnectionString();
         private Logger _logger = new Logger();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LoadUserProfile();
+                LoadLecturerProfile();
                 InitialiseVisibilityLinks();
             }
         }
 
-        private void LoadUserProfile()
+        private void LoadLecturerProfile()
         {
             txtFullName.Text = Session["LoggedInFullName"]?.ToString();
             txtEmail.Text = Session["LoggedInEmail"]?.ToString();
@@ -67,7 +66,7 @@ namespace SmartCampusServices
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            LoadUserProfile();
+            LoadLecturerProfile();
         }
 
         private static string GetConnectionString()

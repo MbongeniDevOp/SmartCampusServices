@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Web.Services;
+using System.Web.UI.WebControls;
 using Npgsql;
 
 namespace SmartCampusServices
@@ -10,6 +11,14 @@ namespace SmartCampusServices
     public partial class AdminLogin : System.Web.UI.Page
     {
         private static readonly string connStr = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                InitialiseVisibilityLinks();
+            }
+        }
 
         [WebMethod]
         public static List<dynamic> GetBookings()
@@ -195,6 +204,38 @@ namespace SmartCampusServices
             }
         }
 
+        private void InitialiseVisibilityLinks()
+        {
+            LinkButton logout = (LinkButton)Master.FindControl("lnkLogout");
+            LinkButton helloUser = (LinkButton)Master.FindControl("lnkHelloUser");
+            LinkButton login = (LinkButton)Master.FindControl("lnkLogin");
+            LinkButton viewSchedules = (LinkButton)Master.FindControl("lnkViewSchedules");
+            LinkButton notificationBtn = (LinkButton)Master.FindControl("lnkNotifications");
+            Image imgLogin = (Image)Master.FindControl("imgLogin");
+
+            string fullName = Session["LoggedInFullName"]?.ToString();
+            string role = Session["LoggedInRole"].ToString();
+
+            if (!string.IsNullOrEmpty(fullName) || !string.IsNullOrEmpty(role))
+            {
+                login.Visible = false;
+                viewSchedules.Visible = true;
+                logout.Visible = true;
+                helloUser.Visible = true;
+                helloUser.Text = $"Hello, {fullName}";
+                imgLogin.Visible = true;
+                notificationBtn.Visible = true;
+            }
+            else
+            {
+                login.Visible = true;
+                viewSchedules.Visible = false;
+                logout.Visible = false;
+                helloUser.Visible = false;
+                imgLogin.Visible = false;
+                notificationBtn.Visible = false;
+            }
+        }
 
     }
 }

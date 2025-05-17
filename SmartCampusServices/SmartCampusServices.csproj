@@ -103,6 +103,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminProfile.aspx" />
     <Content Include="Announcements.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
@@ -2241,6 +2242,7 @@
     <Content Include="imgs\v-lionel-_Lylye3fjYs-unsplash.jpg" />
     <Content Include="imgs\website-generic-svgrepo-com.svg" />
     <Content Include="LecturerPage.aspx" />
+    <Content Include="LecturerProfile.aspx" />
     <Content Include="MaintenanceRequests.aspx" />
     <Content Include="studentlogin.aspx" />
     <Content Include="Terms.aspx" />
@@ -2264,6 +2266,13 @@
     </Compile>
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Announcements.aspx.cs">
       <DependentUpon>Announcements.aspx</DependentUpon>
@@ -2300,6 +2309,13 @@
     <Compile Include="LecturerPage.aspx.designer.cs">
       <DependentUpon>LecturerPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LecturerProfile.aspx.cs">
+      <DependentUpon>LecturerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LecturerProfile.aspx.designer.cs">
+      <DependentUpon>LecturerProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logger.cs" />
     <Compile Include="MaintenanceRequests.aspx.cs">
       <DependentUpon>MaintenanceRequests.aspx</DependentUpon>
@@ -2318,6 +2334,7 @@
     </Compile>
     <Compile Include="studentlogin.aspx.cs">
       <DependentUpon>studentlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="studentlogin.aspx.designer.cs">
       <DependentUpon>studentlogin.aspx</DependentUpon>
